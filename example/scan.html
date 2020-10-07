@@ -15,31 +15,48 @@
 </head>
 
 <body>
-<h1>connect.html</h1>
-
-<button id="btnScan">SCAN</button>
-<div data-bind="foreach: lastResponse">
-  <div class="collapse" data-bind="if: $data.scan">
-    <!-- ko foreach: scan -->
-    <input type="radio" data-bind="attr: {id: 'accordion-section' + ssid }"  aria-hidden="true" name="accordion">
-    <label for="accordion-section1" aria-hidden="true" data-bind="attr: {for: 'accordion-section' + ssid }, text: ssid"></label>
-    <div>
-      <form>
-      <input type="hidden" name="SSID" data-bind="value: ssid" />
-      <input type="password" name="PASSWORD" />
-      <button>CONNECT</button>
-    </form>
-    </div>
-    <!-- /ko -->
+<div class="row">
+  <div class="col-sm-2"><a href="/"><button class="circular shadowed"><span class="icon-home"></span></button></a>
+  </div>
+  <div class="col-sm-10">
+     <h1>scan.html</h1>
   </div>
 </div>
+<hr />
 
-<div><a href="/">Volver</a></div>
+<div class="container">
+  <button class="circular shadowed" id="btnScan"><span class="icon-search"></span></button>
+    <div data-bind="foreach: lastResponse">
+      <div class="collapse" data-bind="if: $data.scan">
+        <!-- ko foreach: scan -->
+        <input type="radio" data-bind="attr: {id: 'accordion-section' + ssid }"  aria-hidden="true" name="accordion">
+        <label for="accordion-section1" aria-hidden="true" data-bind="attr: {for: 'accordion-section' + ssid }"><span class="icon-rss"></span><span data-bind="text: ssid"></span></label>
+        <div>
+          <form>
+            <input type="hidden" name="SSID" data-bind="value: ssid" />
+            <div class="row">
+              <div class="col-sm-10">
+                <label><span class="icon-lock"></span>-></label>
+                <input type="password" name="PASSWORD" />
+              </div>
+              <div class="col-sm-2">
+                <button><span class="icon-upload"></span></button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <!-- /ko -->
+      </div>
+    </div>
+</div>
+
+
+
 <script src="/lib/index.js"></script>
 <script>
   let btnScan = document.querySelector("#btnScan");
   btnScan.addEventListener('click', event => {
-    wifiServ.send({ SCAN_WIFI: 1, scan: [{ssid: 'Red1'}, {ssid: 'Red2'}]});
+    wifiServ.send({ SCAN_WIFI: 1, scan: [{ssid: 'NETWORK_1'}, {ssid: 'NETWORK_2'}]});
   });
 </script>
 </body>

@@ -16,12 +16,23 @@
 
 <body>
 <h1>connect.html</h1>
-<div><button id="btnScan" >SCAN</button></div>
-<form data-bind="foreach: lastResponse">
-  <ul data-bind="foreach: scan">
-    <li data-bind="text: ssid"></li>
-  </ul>
-</form>	
+
+<button id="btnScan">SCAN</button>
+<div data-bind="foreach: lastResponse">
+  <div class="collapse" data-bind="if: $data.scan">
+    <!-- ko foreach: scan -->
+    <input type="radio" data-bind="attr: {id: 'accordion-section' + ssid }"  aria-hidden="true" name="accordion">
+    <label for="accordion-section1" aria-hidden="true" data-bind="attr: {for: 'accordion-section' + ssid }, text: ssid"></label>
+    <div>
+      <form>
+      <input type="hidden" name="SSID" data-bind="value: ssid" />
+      <input type="password" name="PASSWORD" />
+      <button>CONNECT</button>
+    </form>
+    </div>
+    <!-- /ko -->
+  </div>
+</div>
 
 <div><a href="/">Volver</a></div>
 <script src="/lib/index.js"></script>

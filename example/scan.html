@@ -15,14 +15,36 @@
 </head>
 
 <body>
-<div class="row">
-  <div class="col-sm-2"><a href="/"><button class="circular shadowed"><span class="icon-home"></span></button></a>
+
+<div class="row " style="background:black">
+  <div class="col-sm-8">
+    
   </div>
-  <div class="col-sm-10">
-     <h1>scan.html</h1>
+  <div class="col-sm-2" style="background:#333">
+    <a href="/example/scan.html"><span class="tooltip bottom" aria-label="WiFi Connection"><span class="icon-rss inverse"></span>: &#9940;</span></a>
+  </div>
+  <div class="col-sm-2" style="background:#444" >
+    <label for="modal-control"><span class="tooltip bottom" aria-label="ESP Connection">&#128260;: &#9989;</span></label>
   </div>
 </div>
+
+<!-- CONSOLA-->
+<input type="checkbox" id="modal-control" class="modal">
+<div>
+  <div class="card">
+    <label for="modal-control" class="modal-close" ></label>
+    <h3 class="section">Modal</h3>
+    <p class="section">This is a modal dialog!</p>
+  </div>
+</div>
+
+<div class="row">
+  <a href="/"><button> &lArr; <span class="icon-home"></span></button></a>
+  <h1>scan.html</h1>
+</div>
 <hr />
+
+
 
 <div class="container">
   <button class="circular shadowed" id="btnScan"><span class="icon-search"></span></button>

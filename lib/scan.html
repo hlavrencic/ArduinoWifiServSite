@@ -19,7 +19,7 @@
 <!-- BARRA ESTADO -->
 <div class="row " style="background:black">
   <div class="col-sm"></div>
-  <div class="col-sm-2" style="background:#333">
+  <div class="col-sm-2" style="background:#333; text-align:center;">
     <a href="/lib/scan.html"><span class="tooltip bottom" aria-label="WiFi Connection"><span class="icon-rss inverse"></span> 
     <span data-bind="ifnot: wifiStatus">&#10067;</span>
     <span data-bind="if: wifiStatus() == 'CONNECTING'">&#9940;</span>
@@ -28,13 +28,15 @@
     <span data-bind="if: wifiStatus() == 'ERROR'">&#10060;</span>
     </span></a>
   </div>
-  <div class="col-sm-2" style="background:#444" >
+  <div class="col-sm-2" style="background:#444; text-align:center" >
     <a href="#" data-bind="click: () => showConsole(!showConsole())"><span class="tooltip bottom" aria-label="ESP Connection">&#128260;
       <span data-bind="if: connectionStatus() == 'OPENED'">&#9989;</span>
       <span data-bind="if: connectionStatus() == 'CLOSED'">&#9940;</span>
       <span data-bind="if: connectionStatus() == 'ERROR'">&#10060;</span>
       <span data-bind="if: connectionStatus() == null">&#10067;</span>
-    </span></a>
+      <span data-bind="if: socketResponsesAlert">&#10069;</span>
+      </span>
+    </a>
   </div>
   <div class="col-sm"></div>
 </div>
@@ -43,7 +45,9 @@
 <div data-bind="if: showConsole" class="container" style="background:#444">
   <div class="row"><span class="spinner tertiary"></span></div>
   <!-- ko foreach: allEvents -->
-  <div class="row"><small><pre data-bind="text: $data"></pre></small></div>
+  <div class="row">
+    <small><pre data-bind="text: $data"></pre></small>
+  </div>
   <!-- /ko -->
 </div>
 
@@ -56,12 +60,39 @@
 
 <!-- CUERPO -->
 <div class="container">
-  <form>
-      <label>PIN2: </label><input type="checkbox" name="pin2">
-      <button >SEND</button>
-  </form>
+  <button class="circular shadowed" id="btnScan"><span class="icon-search"></span></button>
+    <div data-bind="foreach: lastResponse">
+      <div class="collapse" data-bind="if: $data.scan">
+        <!-- ko foreach: scan -->
+        <input type="radio" data-bind="attr: {id: 'accordion-section' + ssid }"  aria-hidden="true" name="accordion">
+        <label for="accordion-section1" aria-hidden="true" data-bind="attr: {for: 'accordion-section' + ssid }"><span class="icon-rss"></span><span data-bind="text: ssid"></span></label>
+        <div>
+          <form>
+            <input type="hidden" name="SSID" data-bind="value: ssid" />
+            <div class="row">
+              <div class="col-sm-10">
+                <label><span class="icon-lock"></span>-></label>
+                <input type="password" name="PASSWORD" />
+              </div>
+              <div class="col-sm-2">
+                <button><span class="icon-upload"></span></button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <!-- /ko -->
+      </div>
+    </div>
 </div>
 
+
+
 <script src="/lib/index.js"></script>
+<script>
+  let btnScan = document.querySelector("#btnScan");
+  btnScan.addEventListener('click', event => {
+    wifiServ.send({ SCAN_WIFI: 1, scan: [{ssid: 'NETWORK_1'}, {ssid: 'NETWORK_2'}]});
+  });
+</script>
 </body>
 </html>

@@ -1,60 +1,76 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>example/sendSocket.html</title>
+    <link rel="icon" type="image/vnd.microsoft.icon" href="favicon.ico" />
+    <script src="/lib/knockout.js"></script>
+    <script src="/lib/wifiserv.js"></script>
+    <script src="/lib/binder.js"></script>
+    <script src="/lib/jquery.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.rawgit.com/Chalarangelo/mini.css/v3.0.1/dist/mini-default.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+  </head>
 
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-	<title>example/sendSocket.html</title>
-	<link rel="icon" type="image/vnd.microsoft.icon" href="favicon.ico">
-  <script src="/lib/knockout.js"></script>
-  <script src="/lib/wifiserv.js"></script>
-  <script src="/lib/binder.js"></script>
-  <script src="/lib/jquery.js"></script>
-  <link rel="stylesheet" href="https://cdn.rawgit.com/Chalarangelo/mini.css/v3.0.1/dist/mini-default.min.css">
-  <link rel="stylesheet" type="text/css" href="/css/style.css">
-</head>
+  <body>
+    <cabecera></cabecera>
 
-<body>
-<cabecera></cabecera>
-
-
-<!-- CUERPO -->
-<div class="container">
-  <button class="circular shadowed" id="btnScan"><span class="icon-search"></span></button>
-    <div data-bind="foreach: lastResponse">
-      <div class="collapse" data-bind="if: $data.scan">
-        <!-- ko foreach: scan -->
-        <input type="radio" data-bind="attr: {id: 'accordion-section' + ssid }"  aria-hidden="true" name="accordion">
-        <label for="accordion-section1" aria-hidden="true" data-bind="attr: {for: 'accordion-section' + ssid }"><span class="icon-rss"></span><span data-bind="text: ssid"></span></label>
-        <div>
-          <form>
-            <input type="hidden" name="SSID" data-bind="value: ssid" />
-            <div class="row">
-              <div class="col-sm-10">
-                <label><span class="icon-lock"></span>-></label>
-                <input type="password" name="PASSWORD" />
+    <!-- CUERPO -->
+    <div class="container">
+      <button class="circular shadowed" id="btnScan">
+        <span class="icon-search"></span>
+      </button>
+      <div data-bind="foreach: lastResponse">
+        <div class="collapse" data-bind="if: $data.scan">
+          <!-- ko foreach: scan -->
+          <input
+            type="radio"
+            data-bind="attr: {id: 'accordion-section' + ssid }"
+            aria-hidden="true"
+            name="accordion"
+          />
+          <label
+            for="accordion-section1"
+            aria-hidden="true"
+            data-bind="attr: {for: 'accordion-section' + ssid }"
+            ><span class="icon-rss"></span><span data-bind="text: ssid"></span
+          ></label>
+          <div>
+            <form>
+              <input type="hidden" name="SSID" data-bind="value: ssid" />
+              <div class="row">
+                <div class="col-sm-10">
+                  <label><span class="icon-lock"></span>-></label>
+                  <input type="password" name="PASSWORD" />
+                </div>
+                <div class="col-sm-2">
+                  <button><span class="icon-upload"></span></button>
+                </div>
               </div>
-              <div class="col-sm-2">
-                <button><span class="icon-upload"></span></button>
-              </div>
-            </div>
-          </form>
+            </form>
+          </div>
+          <!-- /ko -->
         </div>
-        <!-- /ko -->
       </div>
     </div>
-</div>
 
-<br />
-<footer></footer>
+    <br />
+    <footer></footer>
 
-<script src="/lib/index.js"></script>
-<script>
-  let btnScan = document.querySelector("#btnScan");
-  btnScan.addEventListener('click', event => {
-    wifiServ.send({ SCAN_WIFI: 1, scan: [{ssid: 'NETWORK_1'}, {ssid: 'NETWORK_2'}]});
-  });
-</script>
-</body>
+    <script src="/lib/index.js"></script>
+    <script>
+      let btnScan = document.querySelector("#btnScan");
+      btnScan.addEventListener("click", event => {
+        wifiServ.send({
+          SCAN_WIFI: 1,
+          scan: [{ ssid: "NETWORK_1" }, { ssid: "NETWORK_2" }]
+        });
+      });
+    </script>
+  </body>
 </html>

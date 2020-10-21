@@ -31,10 +31,9 @@
     <!-- ko foreach: console -->
     
 		<div class="row">
-			<div ><small><label data-bind="text: $data.time"></label></small>
+			<div ><span data-bind="text: $root.consoleTypeSymbol($data.type)"></span><small><span data-bind="date: $data.time"></span></small>
 	</div>
-	<div><small><pre data-bind="text: $data.data"></pre></small>
-	</div>
+	<div><small><pre data-bind="text: $data.data"></pre></small></div>
 	</div>
 
 	<!-- /ko -->

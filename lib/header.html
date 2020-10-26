@@ -31,7 +31,7 @@
     <!-- ko foreach: console -->
     
 		<div class="row">
-			<div ><span data-bind="text: $root.consoleTypeSymbol($data.type)"></span><small><span data-bind="date: $data.time"></span></small>
+			<div ><span data-bind="text: $root.consoleTypeSymbol($data.type)" style:"color:white;"></span> <small><span data-bind="date: $data.time"></span></small>
 	</div>
 	<div><small><pre data-bind="text: $data.data"></pre></small></div>
 	</div>

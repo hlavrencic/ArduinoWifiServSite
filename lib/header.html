@@ -1,4 +1,5 @@
 <cabecera>
+	<!-- ko with: status -->
 	<!-- BARRA ESTADO -->
 	<div class="row " style="background:black">
 		<div class="col-sm"></div>
@@ -31,7 +32,7 @@
     <!-- ko foreach: console -->
     
 		<div class="row">
-			<div ><span data-bind="text: $root.consoleTypeSymbol($data.type)" style:"color:white;"></span> <small><span data-bind="date: $data.time"></span></small>
+			<div ><span data-bind="text: $parent.consoleTypeSymbol($data.type)" style:"color:white;"></span> <small><span data-bind="date: $data.time"></span></small>
 	</div>
 	<div><small><pre data-bind="text: $data.data"></pre></small></div>
 	</div>
@@ -43,7 +44,8 @@
 	<!-- TITULO -->
 	<div class="row">
 		<a href="/"><button> &lArr; <span class="icon-home"></span></button></a>
-		<h1 data-bind="text: locationPathName"></h1>
+		<h1 data-bind="text: getLocation()"></h1>
 	</div>
 	<hr />
+	<!-- /ko -->
 </cabecera>

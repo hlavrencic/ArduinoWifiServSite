@@ -30,6 +30,14 @@
 		</ol>
 	</div>
 	<footer></footer>
+
+	<script>
+		require(['viewModel'],(viewModel) => {
+      setTimeout(()=>{
+        console.log(viewModel);
+      }, 15000);
+    });
+	</script>
 </body>
 
 </html>

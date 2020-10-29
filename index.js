@@ -1,0 +1,3 @@
+require(["lib/main"], function(main) {
+  // Your code here...
+});

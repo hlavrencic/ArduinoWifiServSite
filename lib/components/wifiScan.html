@@ -1,5 +1,5 @@
-<form>
-	<button class="circular shadowed" id="btnScan"><span class="icon-search"></span></button>
+<form data-bind="submit: scan">
+	<button type="submit" class="circular shadowed" id="btnScan"><span class="icon-search"></span></button>
 	<input type="hidden" name="SCAN_WIFI" value="1" />
 		</form>
 	<div data-bind="with: wifi">

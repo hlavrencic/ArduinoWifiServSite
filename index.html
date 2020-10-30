@@ -17,6 +17,8 @@
 <body>
 	<cabecera></cabecera>
 
+	<title-path params="$root"></title-path>
+
 	<!-- CUERPO -->
 	<div class="container">
 		<p>
@@ -32,7 +34,7 @@
 	<footer></footer>
 
 	<script>
-		require(['viewModel'],(viewModel) => {
+		require(['viewModel', 'titlePath'],(viewModel) => {
       setTimeout(()=>{
         console.log(viewModel);
       }, 15000);

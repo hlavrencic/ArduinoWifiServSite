@@ -34,11 +34,7 @@
 	<footer></footer>
 
 	<script>
-		require(['viewModel', 'titlePath'],(viewModel) => {
-      setTimeout(()=>{
-        console.log(viewModel);
-      }, 15000);
-    });
+		require(['viewModel', 'text!titlePath.html', 'titlePath']);
 	</script>
 </body>
 

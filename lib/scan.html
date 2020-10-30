@@ -21,9 +21,9 @@
 			<button class="circular shadowed" id="btnScan"><span class="icon-search"></span></button>
 			<input type="hidden" name="SCAN_WIFI" value="1" />
 		</form>
-			<div data-bind="foreach: lastResponse">
-				<div class="collapse" data-bind="if: $data.scan">
-					<!-- ko foreach: scan -->
+			<div data-bind="with: wifi">
+				<div class="collapse" data-bind="if: networks">
+					<!-- ko foreach: networks -->
 					<input
             type="radio"
             data-bind="attr: {id: 'accordion-section' + ssid }"

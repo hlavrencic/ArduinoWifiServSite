@@ -5,32 +5,11 @@ class="icon-search"></span></button>
 <div data-bind="with: wifi">
 	<div class="collapse" data-bind="if: networks">
 		<!-- ko foreach: networks -->
-		<input
-            type="radio"
-            data-bind="attr: {id: 'accordion-section' + ssid }"
-            aria-hidden="true"
-            name="accordion"
-          />
-		<label
-            for="accordion-section1"
-            aria-hidden="true"
-            data-bind="attr: {for: 'accordion-section' + ssid }"
-            ><span class="icon-rss"></span><span data-bind="text: ssid"></span
-          ></label>
-		<div>
-			<form>
-				<input type="hidden" name="SSID" data-bind="value: ssid" />
-				<div class="row">
-					<div class="col-sm-10">
-						<label><span class="icon-lock"></span>-></label>
-						<input type="password" name="PASSWORD" />
-                </div>
-						<div class="col-sm-2">
-							<button><span class="icon-upload"></span></button>
-						</div>
-					</div>
-			</form>
-		</div>
+		<!-- ko component: {
+        name: "network",
+        params: { ssid } 
+      } -->
+		<!-- /ko -->
 		<!-- /ko -->
 	</div>
 </div>

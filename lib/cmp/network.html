@@ -1,13 +1,13 @@
 <input
             type="radio"
-            data-bind="attr: {id: 'accordion-section' + ssid }"
+            data-bind="attr: {id: 'accordion-section' + ssid() }"
             aria-hidden="true"
             name="accordion"
           />
 <label
             for="accordion-section1"
             aria-hidden="true"
-            data-bind="attr: {for: 'accordion-section' + ssid }"
+            data-bind="attr: {for: 'accordion-section' + ssid() }"
             ><span class="icon-rss"></span><span data-bind="text: ssid"></span
           ></label>
 <div>

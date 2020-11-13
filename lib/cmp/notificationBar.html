@@ -1,8 +1,9 @@
 <!-- BARRA ESTADO -->
 <div class="row " style="background:black">
 	<div class="col-sm"></div>
-	<div class="col-sm-2" style="background:#333; text-align:center;">
-		<a href="/lib/scan.html"><span class="tooltip bottom" aria-label="WiFi Connection"><span class="icon-rss inverse"></span>
+	<div class="col-sm-2" style="background:#AAA; text-align:center;">
+		<a href="#"
+			data-bind="click: () => {showWifi(!showWifi()); showConsole(false);}"><span class="tooltip bottom" aria-label="WiFi Connection"><span class="icon-rss inverse"></span>
 			<span data-bind="ifnot: wifiStatus">&#10067;</span>
 			<span data-bind="if: wifiStatus() == 'CONNECTING'">&#8987;</span>
 			<span data-bind="if: wifiStatus() == 'CONNECTED'">&#9989;</span>
@@ -10,8 +11,8 @@
 			<span data-bind="if: wifiStatus() == 'ERROR'">&#10060;</span>
 			</span></a>
 	</div>
-	<div class="col-sm-2" style="background:#444; text-align:center">
-		<a href="#" data-bind="click: () => showConsole(!showConsole())"><span class="tooltip bottom" aria-label="ESP Connection">&#128260;
+	<div class="col-sm-2" style="background:#888; text-align:center">
+		<a href="#" data-bind="click: () => { showConsole(!showConsole()); showWifi(false); }"><span class="tooltip bottom" aria-label="ESP Connection">&#128260;
         <span data-bind="if: connectionStatus() == 'OPENED'">&#9989;</span>
 			<span data-bind="if: connectionStatus() == 'CLOSED'">&#9940;</span>
 			<span data-bind="if: connectionStatus() == 'ERROR'">&#10060;</span>
@@ -24,7 +25,7 @@
 </div>
 
 <!-- CONSOLA -->
-<div data-bind="if: showConsole" class="container" style="background:#444">
+<div data-bind="if: showConsole" class="container" style="background:#888">
 	<div class="row"><small>&nbsp;</small></div>
 	<small>
     <!-- ko foreach: console -->
@@ -37,4 +38,17 @@
 
 <!-- /ko -->
 </small>
+</div>
+
+<div data-bind="if: showWifi" class="container" style="background:#AAA">
+	<div class="row">
+		<h5>WiFi Status: <span data-bind="text: wifiStatus"></span></h5>
+	</div>
+	<h6 data-bind="if: ssid"><span data-bind="text: ssid"></span><small>SSID</small></h6>
+	<h6 data-bind="if: ip"><span data-bind="text: ip"></span><small>IP</small></h6>
+	<h6 data-bind="if: mask"><span data-bind="text: mask"></span><small>MASK</small></h6>
+	<h6 data-bind="if: reason"><span data-bind="text: reason"></span><small>REASON</small></h6>
+	<h6 data-bind="if: gw"><span data-bind="text: gw"></span><small>GATEWAY</small></h6>
+	<h6 data-bind="if: channel"><span data-bind="text: channel"></span><small>CHANNEL</small></h6>
+	<h6 data-bind="if: aid"><span data-bind="text: aid"></span><small>AID</small></h6>
 </div>

@@ -42,6 +42,7 @@
 
 <div data-bind="if: showWifi" class="container" style="background:#AAA">
 	<div class="row">
+		<button data-bind="click: () => { autoSync(!autoSync())} "><span data-bind="text: autoSyncText()"></span></button>
 		<h5>WiFi Status: <span data-bind="text: wifiStatus"></span></h5>
 	</div>
 	<h6 data-bind="if: ssid"><span data-bind="text: ssid"></span><small>SSID</small></h6>

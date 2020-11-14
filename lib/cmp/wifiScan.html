@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <form data-bind="submit: scan">
 	<button type="submit" class="circular shadowed" id="btnScan"><span class="icon-search"></span></button>
 	<input type="hidden" name="SCAN_WIFI" value="1" />
@@ -34,3 +35,20 @@
 			<!-- /ko -->
 		</div>
 	</div>
+=======
+<fieldset>
+	<button data-bind="click: scan" class="circular shadowed" id="btnScan"><span 
+class="icon-search"></span></button>
+</fieldset>
+<div data-bind="with: wifi">
+	<div class="collapse" data-bind="if: networks">
+		<!-- ko foreach: networks -->
+		<!-- ko component: {
+        name: "network",
+        params: { ssid } 
+      } -->
+		<!-- /ko -->
+		<!-- /ko -->
+	</div>
+</div>
+>>>>>>> 13809029566cc8aaff450a8a65ec29a42131efd4

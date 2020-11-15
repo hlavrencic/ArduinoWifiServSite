@@ -2,14 +2,12 @@
 	<button data-bind="click: scan" class="circular shadowed" id="btnScan"><span 
 class="icon-search"></span></button>
 </fieldset>
-<div data-bind="with: wifi">
-	<div class="collapse" data-bind="if: networks">
-		<!-- ko foreach: networks -->
-		<!-- ko component: {
-        name: "network",
-        params: { ssid } 
-      } -->
-		<!-- /ko -->
-		<!-- /ko -->
-	</div>
+<div class="collapse" data-bind="if: networks">
+	<!-- ko foreach: networks -->
+	<!-- ko component: {
+      name: "network",
+      params: { ssid } 
+    } -->
+	<!-- /ko -->
+	<!-- /ko -->
 </div>

@@ -3,12 +3,14 @@
 	<div class="col-sm"></div>
 	<div class="col-sm-2" style="background:#AAA; text-align:center;">
 		<a href="#"
-			data-bind="click: () => {showWifi(!showWifi()); showConsole(false);}"><span class="tooltip bottom" aria-label="WiFi Connection"><span class="icon-rss inverse"></span> 
+			data-bind="click: () => {showWifi(!showWifi()); showConsole(false);}"><span class="tooltip bottom" aria-label="WiFi Connection"><span class="icon-rss inverse"></span>
+			<!-- ko with: wifi -->
 			<span data-bind="ifnot: wifiStatus">&#10067;</span>
 			<span data-bind="if: wifiStatus() == 'CONNECTING'">&#8987;</span>
 			<span data-bind="if: wifiStatus() == 'CONNECTED'">&#9989;</span>
 			<span data-bind="if: wifiStatus() == 'CLOSED'">&#9940;</span>
 			<span data-bind="if: wifiStatus() == 'ERROR'">&#10060;</span>
+			<!-- /ko -->
 			</span></a>
 	</div>
 	<div class="col-sm-2" style="background:#888; text-align:center">
@@ -41,8 +43,10 @@
 </div>
 
 <div data-bind="if: showWifi" class="container" style="background:#AAA">
+
+	<!-- ko with: wifi -->
 	<div class="row">
-		<button data-bind="click: () => { autoSync(!autoSync())} "><span data-bind="text: autoSyncText()"></span></button>
+		<button data-bind="click: () => { autoSync(!autoSync())} "><span data-bind="text: $parent.autoSyncText()"></span></button>
 		<h5>WiFi Status: <span data-bind="text: wifiStatus"></span></h5>
 	</div>
 	<h6 data-bind="if: ssid"><span data-bind="text: ssid"></span><small>SSID</small></h6>
@@ -52,4 +56,5 @@
 	<h6 data-bind="if: gw"><span data-bind="text: gw"></span><small>GATEWAY</small></h6>
 	<h6 data-bind="if: channel"><span data-bind="text: channel"></span><small>CHANNEL</small></h6>
 	<h6 data-bind="if: aid"><span data-bind="text: aid"></span><small>AID</small></h6>
+	<!-- /ko -->
 </div>

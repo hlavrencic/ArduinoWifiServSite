@@ -6,10 +6,10 @@
 			data-bind="click: () => {showWifi(!showWifi()); showConsole(false);}"><span class="tooltip bottom" aria-label="WiFi Connection"><span class="icon-rss inverse"></span>
 			<!-- ko with: wifi -->
 			<span data-bind="ifnot: wifiStatus">&#10067;</span>
-			<span data-bind="if: wifiStatus() == 'CONNECTING'">&#8987;</span>
-			<span data-bind="if: wifiStatus() == 'CONNECTED'">&#9989;</span>
-			<span data-bind="if: wifiStatus() == 'CLOSED'">&#9940;</span>
-			<span data-bind="if: wifiStatus() == 'ERROR'">&#10060;</span>
+			<span data-bind="if: wifiStatus() == WifiStatusViewModel.WifiStatus.WL_SCAN_COMPLETED">&#8987;</span>
+			<span data-bind="if: wifiStatus() == WifiStatusViewModel.WifiStatus.WL_CONNECTED">&#9989;</span>
+			<span data-bind="if: wifiStatus() == WifiStatusViewModel.WifiStatus.WL_DISCONNECTED">&#9940;</span>
+			<span data-bind="if: wifiStatus() == WifiStatusViewModel.WifiStatus.WL_CONNECT_FAILED">&#10060;</span>
 			<!-- /ko -->
 			</span></a>
 	</div>

@@ -3,15 +3,12 @@
 	<div class="col-sm"></div>
 	<div class="col-sm-2" style="background:#AAA; text-align:center;">
 		<a href="#"
-			data-bind="click: () => {showWifi(!showWifi()); showConsole(false);}"><span class="tooltip bottom" aria-label="WiFi Connection"><span class="icon-rss inverse"></span>
-			<!-- ko with: wifi -->
-			<span data-bind="ifnot: wifiStatus">&#8987;</span>
-			<span data-bind="if: wifiStatus() == WifiStatusViewModel.WifiStatus.WL_SCAN_COMPLETED">&#10067;</span>
-			<span data-bind="if: wifiStatus() == WifiStatusViewModel.WifiStatus.WL_CONNECTED">&#9989;</span>
-			<span data-bind="if: wifiStatus() == WifiStatusViewModel.WifiStatus.WL_DISCONNECTED">&#9940;</span>
-			<span data-bind="if: wifiStatus() == WifiStatusViewModel.WifiStatus.WL_CONNECT_FAILED">&#10060;</span>
-			<!-- /ko -->
-			</span></a>
+			data-bind="click: () => {showWifi(!showWifi()); showConsole(false);}">
+			<span class="tooltip bottom" aria-label="WiFi Connection">
+				<span class="icon-rss inverse"></span>
+				<span data-bind="text: wifiStatusLogo"></span>
+			</span>
+		</a>
 	</div>
 	<div class="col-sm-2" style="background:#888; text-align:center">
 		<a href="#" data-bind="click: () => { showConsole(!showConsole()); showWifi(false); }"><span class="tooltip bottom" aria-label="ESP Connection">&#128260;

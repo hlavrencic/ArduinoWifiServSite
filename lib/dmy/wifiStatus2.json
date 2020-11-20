@@ -1,5 +1,6 @@
 {
-"wifiStatus": "ERROR",
+"wifiStatus": 6,
 "reason": 8,
-"ssid": "NETWORK_1"
+"ssid": "NETWORK_1",
+"status": 1
 }

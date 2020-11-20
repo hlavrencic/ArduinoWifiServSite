@@ -1,9 +1,10 @@
 {
-  "wifiStatus": "CONNECTED",
+  "wifiStatus": 3,
   "ip": "192.168.1.101",
   "gw": "192.168.1.1",
   "mask": "255.255.0.0",
   "reason": null,
   "ssid": "NETWORK_1",
-  "channel": 5
+  "channel": 5,
+  "status": 3
 }

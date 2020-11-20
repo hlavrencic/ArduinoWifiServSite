@@ -47,7 +47,7 @@
 	<!-- ko with: wifi -->
 	<div class="row">
 		<button data-bind="click: () => { autoSync(!autoSync())} "><span data-bind="text: $parent.autoSyncText()"></span></button>
-		<h5>WiFi Status: <span data-bind="text: WifiStatusViewModel.StatusName(wifiStatus())"></span></h5>
+		<h5>WiFi Status: <span data-bind="text: wifiStatusTxt"></span></h5>
 	</div>
 	<h6 data-bind="if: ssid"><span data-bind="text: ssid"></span><small>SSID</small></h6>
 	<h6 data-bind="if: ip"><span data-bind="text: ip"></span><small>IP</small></h6>
